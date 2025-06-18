@@ -67,4 +67,24 @@ class User extends Authenticatable
         return $this->hasMany(Staff::class);
     }
 
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isUser()
+    {
+        return $this->role === 'user';
+    }
+    
+    public function isOrganizer()
+    {
+        return $this->role === 'organizer';
+    }
+
+    public function isGuest()
+    {
+        return $this->role === 'guest';
+    }
+
 }
