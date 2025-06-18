@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -45,4 +46,25 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function teamsCreated()
+    {
+        return $this->hasMany(Team::class,'created_by');
+    }
+
+    public function organizedTournaments()
+    {
+        return $this->hasMany(Tournament::class,'organizer_id');
+    }
+
+    public function playerProfile()
+    {
+        return $this->hasOne(Player::class);
+    }
+
+    public function staffAssignments()
+    {
+        return $this->hasMany(Staff::class);
+    }
+
 }
