@@ -15,7 +15,7 @@ class TournamentPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->is_admin;
+        return $user->isAdmin();
     }
 
     /**
@@ -23,7 +23,7 @@ class TournamentPolicy
      */
     public function view(User $user, Tournament $tournament): bool
     {
-        return $user->is_admin || $user->id === $tournament->user_id;
+        return $user->isAdmin() || $user->id === $tournament->user_id;
     }
 
     /**
@@ -31,7 +31,7 @@ class TournamentPolicy
      */
     public function create(User $user): bool
     {
-        return $user->is_admin;
+        return $user->isAdmin();
     }
 
     /**
@@ -39,7 +39,7 @@ class TournamentPolicy
      */
     public function update(User $user, Tournament $tournament): bool
     {
-        return $user->is_admin || $user->id === $tournament->user_id;
+        return $user->isAdmin() || $user->id === $tournament->user_id;
     }
 
     /**
@@ -47,7 +47,7 @@ class TournamentPolicy
      */
     public function delete(User $user, Tournament $tournament): bool
     {
-        return $user->is_admin || $user->id === $tournament->user_id;
+        return $user->isAdmin() || $user->id === $tournament->user_id;
     }
 
     /**
@@ -55,7 +55,7 @@ class TournamentPolicy
      */
     public function restore(User $user, Tournament $tournament): bool
     {
-        return $user->is_admin;
+        return $user->isAdmin();
     }
 
     /**
@@ -63,6 +63,6 @@ class TournamentPolicy
      */
     public function forceDelete(User $user, Tournament $tournament): bool
     {
-        return $user->is_admin;
+        return $user->isAdmin();
     }
 }

@@ -21,22 +21,25 @@ class TeamController extends Controller
      */
     public function create()
     {
-        return view('teams.create');
+        $organizations = \App\Models\Organization::all(); // Fetch all organizations
+    return view('teams.create', compact('organizations'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'organization_id' => 'required|exists:organizations,id',
-        ]);
+{
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'organization_id' => 'required|exists:organizations,id',
+    ]);
 
-        Team::create($validated);
-        return redirect()->route('teams.index');
-    }
+    // Create the team with the validated data
+    Team::create($validated);
+
+    return redirect()->route('teams.index');
+}
 
     /**
      * Display the specified resource.

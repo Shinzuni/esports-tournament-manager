@@ -25,15 +25,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'can.admin'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 });
 
-Route::middleware(['auth', 'can.teams'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::resource('teams', TeamController::class);
 });
 
-Route::middleware(['auth', 'can.tournaments'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::resource('tournaments', TournamentController::class);
 });
 

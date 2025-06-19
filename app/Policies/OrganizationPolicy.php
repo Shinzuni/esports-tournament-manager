@@ -15,7 +15,7 @@ class OrganizationPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->is_admin;
+        return $user->isAdmin();
     }
 
     /**
@@ -23,7 +23,7 @@ class OrganizationPolicy
      */
     public function view(User $user, Organization $organization): bool
     {
-        return $user->is_admin || $user->id === $organization->user_id;
+        return $user->isAdmin() || $user->id === $organization->user_id;
     }
 
     /**
@@ -31,7 +31,7 @@ class OrganizationPolicy
      */
     public function create(User $user): bool
     {
-        return $user->is_admin;
+        return $user->isAdmin();
     }
 
     /**
@@ -39,7 +39,7 @@ class OrganizationPolicy
      */
     public function update(User $user, Organization $organization): bool
     {
-        return $user->is_admin || $user->id === $organization->user_id;
+        return $user->isAdmin() || $user->id === $organization->user_id;
     }
 
     /**
@@ -47,7 +47,7 @@ class OrganizationPolicy
      */
     public function delete(User $user, Organization $organization): bool
     {
-        return $user->is_admin || $user->id === $organization->user_id;
+        return $user->isAdmin() || $user->id === $organization->user_id;
     }
 
     /**
@@ -55,7 +55,7 @@ class OrganizationPolicy
      */
     public function restore(User $user, Organization $organization): bool
     {
-        return $user->is_admin;
+        return $user->isAdmin();
     }
 
     /**
@@ -63,6 +63,6 @@ class OrganizationPolicy
      */
     public function forceDelete(User $user, Organization $organization): bool
     {
-        return $user->is_admin;
+        return $user->isAdmin();
     }
 }

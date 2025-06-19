@@ -1,18 +1,26 @@
 @extends('layouts.app')
+
 @section('content')
-<h1>Create Tournament</h1>
-<form method="POST" action="{{ route('tournaments.store') }}">
-    @csrf
-    <label>Name: <input type="text" name="name" required></label>
-    <label>Start Date: <input type="date" name="start_date" required></label>
-    <label>End Date: <input type="date" name="end_date" required></label>
-    <label>Organization:
-        <select name="organization_id">
-            @foreach($organizations as $organization)
-                <option value="{{ $organization->id }}">{{ $organization->name }}</option>
-            @endforeach
-        </select>
-    </label>
-    <button type="submit">Save</button>
-</form>
+    <div class="container bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-semibold text-white">Create Tournament</h1>
+        <form method="POST" action="{{ route('tournaments.store') }}" class="mt-6">
+            @csrf
+
+            <div class="form-group mb-4">
+                <label for="name" class="text-white">Name:</label>
+                <input type="text" name="name" required class="form-control bg-gray-100 dark:bg-gray-700 text-white border border-gray-300 dark:border-gray-600 rounded-md p-2 w-full">
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="organization_id" class="text-white">Organization:</label>
+                <select name="organization_id" class="form-control bg-gray-100 dark:bg-gray-700 text-white border border-gray-300 dark:border-gray-600 rounded-md p-2 w-full">
+                    @foreach($organizations as $organization)
+                        <option value="{{ $organization->id }}">{{ $organization->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <button type="submit" class="btn bg-blue-600 hover:bg-blue-700 text-white rounded-md p-2">Save</button>
+        </form>
+    </div>
 @endsection

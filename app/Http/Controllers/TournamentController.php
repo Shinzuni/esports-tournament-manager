@@ -21,6 +21,7 @@ class TournamentController extends Controller
      */
     public function create()
     {
+        $organizations = \App\Models\Organization::all(); 
         return view('tournaments.create');
     }
 
